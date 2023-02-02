@@ -1,0 +1,38 @@
+version: "3.3"
+services:
+  db:
+    image: postgres:13
+    volumes:
+      - app:/var/lib/postgresql/data/
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=true
+    env_file:
+      - ./.env
+    networks:
+      mynetwork:
+        aliases:
+          - database
+  app:
+    build: .
+    environment:
+      DATABASE_URI: 'postgresql://postgres:password@localhost:5432/task_10_sql'
+    ports:
+      - "80:80"
+    volumes:
+      - .:/app
+    env_file:
+      - ./.env
+    depends_on:
+      - db
+    networks:
+      - mynetwork
+
+volumes:
+  db:
+  app:
+
+networks:
+  mynetwork:
+    driver: bridge

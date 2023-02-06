@@ -3,11 +3,9 @@ from typing import List
 
 import names
 
-from models import Base, Course, Group, Student
+from models import Course, Group, Student
 from task_10_sql.app.database import db
-from task_10_sql.app.main import create_app
 from task_10_sql.logger import logger
-from task_10_sql.settings import Config
 
 group_list = ['Google', 'Netflix', 'Tesla',
               'BMW', 'Mercedes', 'Facebook',
@@ -57,11 +55,3 @@ def generate_course_name() -> List[Course]:
     db.session.commit()
     logger.info('Successfully generated course names data')
     return db.session.query(Course).all()
-
-
-if __name__ == '__main__':
-    with create_app(Config).app_context():
-        Base.metadata.create_all(db.engine)
-        generate_group_name()
-        all_courses = generate_course_name()
-        generate_students_names(all_courses)

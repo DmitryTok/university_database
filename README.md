@@ -8,16 +8,8 @@
 # University Database
 ### Run project
 #### Clone repository to your computer
-    Clone with SSH: git@git.foxminded.ua:foxstudent102176/task-10-sql.git
-    Clone with HTTP: http://git.foxminded.ua/foxstudent102176/task-10-sql.git
-
-#### Create virtual environment and enable it
-    python3 -m venv venv
-    macOS: source venv/bit/activate
-    Windows: source venv/Scripts/activate
-    Linux: source venv/bin/activate
-#### Install requirements
-    pip install -r requirements.txt
+    Clone with SSH: git@github.com:DmitryTok/university_database.git
+    Clone with HTTP: https://github.com/DmitryTok/university_database.git
 #### Create and feel the .env file
 DATABASE_URI=<...># specify that we use PostgreSQL database \
 DEBUG_MODE=<...># This debugger should only be used during developing \
@@ -34,6 +26,10 @@ docker-compose up -d db
 Specify which database you use
 ```
 export DATABASE_URI='postgresql://<user>:<password>@localhost:5432/<database_name>'
+```
+Fill database if needed
+```
+python3 populate_db_data_entrypoint.py
 ```
 Run app
 ```

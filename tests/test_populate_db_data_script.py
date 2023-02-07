@@ -1,8 +1,8 @@
 from models import Course, Group, Student
 from task_10_sql.app.database import db
-from task_10_sql.app.populate_db_data_script import (generate_course_name,
-                                                     generate_group_name,
-                                                     generate_students_names)
+from task_10_sql.populate_db_data_script import (generate_course_name,
+                                                 generate_group_name,
+                                                 generate_students_names)
 
 
 def test_generate_group_name():
